@@ -1,6 +1,6 @@
-import { castToReferenceSnapshot } from "mobx-state-tree";
+import { FormStore } from "./FormStore";
 import { RootStore, RootStoreType } from "./RootStore";
-// import makeInspectable from 'mobx-devtools-mst';
+import makeInspectable from 'mobx-devtools-mst';
 import UserStore from "./UserStore";
 
 
@@ -15,10 +15,11 @@ export async function setupRootStore() {
   let store: RootStoreType;
 
   store = RootStore.create({
-    userStore: UserStore.create({ user: { first_name: 'Adrian', last_name: 'Keogan', email: 'dev@saltandtonic.co.nz' } })
+    userStore: UserStore.create({ user: { first_name: 'Adrian', last_name: 'Keogan', email: 'dev@saltandtonic.co.nz' } }),
+    formStore: FormStore.create()
   });
 
-  // makeInspectable(store);
+  makeInspectable(store);
 
   return store;
 }
