@@ -1,5 +1,5 @@
 import { Instance, types } from "mobx-state-tree";
-import { FormTonicStrore } from "./FormTonicStore";
+import { FormTonicStore } from "./FormTonicStore";
 import UserStore from "./UserStore";
 
 /**
@@ -7,7 +7,7 @@ import UserStore from "./UserStore";
  */
 export const RootStore = types.model("RootStore").props({
   userStore: UserStore,
-  formTonicStore: FormTonicStrore
+  formTonicStore: FormTonicStore
 }).actions(self => ({
   // logout: flow(function* () {
   //  self.groupStore = GroupStore.create();

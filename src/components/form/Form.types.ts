@@ -1,6 +1,23 @@
+import React from "react"
 
 export interface IFormProps {
+  /**
+   * The name of the form, this is used for retrieving the form from the stores
+   */
   name: string
+
+  /**
+   * The action that is called on form submit.
+   */
   action: () => Promise<any>
-  initialValues: any
+  
+  /**
+   * Any inital values we want to populate our form with.
+   */
+  initialValues?: any
+
+  /**
+   * Dictates what component is rendered for each field type.
+   */
+   renderField: (type: string) => React.ComponentType<any>
 }

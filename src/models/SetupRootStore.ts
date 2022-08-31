@@ -15,7 +15,7 @@ import { FormTonicStoreType } from "./FormTonicStore";
 export async function setupRootStore() {
   let store: RootStoreType;
 
-  const formTonicStore: FormTonicStoreType = await setupFormTonicStore({});
+  const formTonicStore = await setupFormTonicStore();
 
   store = RootStore.create({
     userStore: UserStore.create({ 

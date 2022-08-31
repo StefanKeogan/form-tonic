@@ -1,7 +1,7 @@
 import { Instance, SnapshotOut, types } from "mobx-state-tree";
 import { Form, FormType } from "./Form";
 
-const FormStore = types.model('FormStore', {
+export const FormStore = types.model('FormStore', {
   forms: types.optional(types.array(Form), [])
 })
   .views(self => ({
@@ -10,9 +10,12 @@ const FormStore = types.model('FormStore', {
         return self.forms.find((form: FormType) => form.name === formName)
       }
     }
+  }))
+  .actions(self => ({
+    createForm() {
+      
+    }
   }));
-
-export default FormStore;
 
 export interface FormStoreType extends Instance<typeof FormStore> {}
 type FormStoreSnapshotType = SnapshotOut<typeof FormStore>

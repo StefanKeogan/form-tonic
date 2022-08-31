@@ -1,5 +1,5 @@
 import { flow } from "mobx";
-import { Instance, SnapshotOut, types } from "mobx-state-tree";
+import { IAnyModelType, Instance, SnapshotOut, types } from "mobx-state-tree";
 import { Field } from "./Field";
 import { ValidationSchema } from './ValidationSchema';
 
@@ -9,9 +9,10 @@ interface IHandleSubmitParams {
 
 export const Form = types.model('Form', {
   name: types.string,
-  fields: types.map(Field),
+  fields: types.array(types.reference(types.late(():IAnyModelType => Field))),
   validationSchema: types.maybeNull(ValidationSchema),
-  submitting: types.boolean
+  submitting: types.boolean,
+  values: types.optional(types.array(types.string), []), // TODO: Value model / store
 })
   .actions(self => ({
     setSubmitting(submitting: boolean) {
