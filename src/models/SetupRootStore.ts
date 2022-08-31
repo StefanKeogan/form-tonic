@@ -1,7 +1,8 @@
-import { FormStore } from "./FormStore";
 import { RootStore, RootStoreType } from "./RootStore";
 import makeInspectable from 'mobx-devtools-mst';
 import UserStore from "./UserStore";
+import { setupFormTonicStore } from './SetupFormTonicStore';
+import { FormTonicStoreType } from "./FormTonicStore";
 
 
 /**
@@ -14,9 +15,14 @@ import UserStore from "./UserStore";
 export async function setupRootStore() {
   let store: RootStoreType;
 
+  const formTonicStore: FormTonicStoreType = await setupFormTonicStore({});
+
   store = RootStore.create({
-    userStore: UserStore.create({ user: { first_name: 'Adrian', last_name: 'Keogan', email: 'dev@saltandtonic.co.nz' } }),
-    formStore: FormStore.create()
+    userStore: UserStore.create({ 
+      user: { first_name: 'Adrian', last_name: 'Keogan', email: 'dev@saltandtonic.co.nz' } 
+    }),
+    
+    formTonicStore
   });
 
   makeInspectable(store);

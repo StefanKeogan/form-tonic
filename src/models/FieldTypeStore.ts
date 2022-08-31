@@ -2,7 +2,7 @@ import { Instance, SnapshotOut, types } from "mobx-state-tree";
 import { FieldType } from "./FieldType";
 
 export const FieldTypeStore = types.model('FieldTypeStore', {
-  fieldTypes: types.array(FieldType)
+  fieldTypes: types.array(FieldType),
 });
 
 export interface FieldTypeStoreType extends Instance<typeof FieldTypeStore> {}
