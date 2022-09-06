@@ -1,6 +1,17 @@
 import { Instance, SnapshotOut, types } from "mobx-state-tree";
 import { Form, FormType } from "./Form";
 
+export interface IFormConfig {
+  name: string;
+  fields: IFormField[];
+}
+
+export interface IFormField {
+  name: string;
+  type: string;
+  default: string | number | boolean;
+}
+
 export const FormStore = types.model('FormStore', {
   forms: types.optional(types.array(Form), [])
 })
@@ -12,8 +23,8 @@ export const FormStore = types.model('FormStore', {
     }
   }))
   .actions(self => ({
-    createForm() {
-      
+    createForm(formConfig: IFormConfig) {
+      console.log(formConfig.fields)
     }
   }));
 

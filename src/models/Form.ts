@@ -11,7 +11,7 @@ export const Form = types.model('Form', {
   name: types.string,
   fields: types.array(types.reference(types.late(():IAnyModelType => Field))),
   validationSchema: types.maybeNull(ValidationSchema),
-  submitting: types.boolean,
+  submitting: types.optional(types.boolean, false),
   values: types.optional(types.array(types.string), []), // TODO: Value model / store
 })
   .actions(self => ({

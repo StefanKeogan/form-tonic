@@ -1,36 +1,35 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import { RootStoreProvider } from './models/RootStoreContext'
+import { RootStoreProvider, useStores } from './models/RootStoreContext'
 import { setupRootStore } from './models/SetupRootStore'
 import { RootStoreType } from './models/RootStore'
 
 function App() {
   const [rootStore, setRootStore] = useState<RootStoreType | null>(null);
-  const [user, setUser] = useState<any | null>(null);
 
   useEffect(() => {
     ; (async () => {
       const store = await setupRootStore();
       setRootStore(store);
+      store.formTonicStore.formStore.createForm(store.userStore.userAsFormConfig);
     })();
   }, []);
 
-  useEffect(() => {
-    if (rootStore) {
-      setUser(rootStore.userStore.user);
-    }
-  }, [rootStore]);
+  const TestForm: React.FC = () => {
+    const { formTonicStore } = useStores();
+    // const form = formTonicStore.formStore.selectedForm;
 
+    return <>
+
+    </>;
+  }
+ 
   return rootStore && (
     <RootStoreProvider value={rootStore}>
       <div className="App">
         <h1>Salty Forms</h1>
-        {user ? <>
-          <p>First name: {user.first_name}</p>
-          <p>Last name: {user.last_name}</p>
-          <p>Email: {user.email}</p>
-        </>
-          : null}
+
+        <TestForm />
       </div>
     </RootStoreProvider>
   )
