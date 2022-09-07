@@ -2,7 +2,7 @@ import { Instance, SnapshotOut, types } from "mobx-state-tree";
 import { Form, FormType } from "./Form";
 
 export interface IFormConfig {
-  name: string;
+  formName: string;
   fields: IFormField[];
 }
 
@@ -10,6 +10,7 @@ export interface IFormField {
   name: string;
   type: string;
   default: string | number | boolean;
+  validation: string;
 }
 
 export const FormStore = types.model('FormStore', {
@@ -24,7 +25,7 @@ export const FormStore = types.model('FormStore', {
   }))
   .actions(self => ({
     createForm(formConfig: IFormConfig) {
-      console.log(formConfig.fields)
+      console.log(formConfig);
     }
   }));
 

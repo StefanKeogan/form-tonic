@@ -14,19 +14,22 @@ const UserStore = types.model('UserStore', {
   .views(self => ({
     get userAsFormConfig(): IFormConfig {
       return {
-        name: 'UserForm',
+        formName: 'UserForm',
         fields: [{
           name: 'first_name',
           type: 'text',
-          default: self.user.first_name
+          default: self.user.first_name,
+          validation: 'string|required'
         }, {
-          name: 'first_name',
+          name: 'last_name',
           type: 'text',
-          default: self.user.first_name
+          default: self.user.last_name,
+          validation: 'string|required'
         }, {
-          name: 'first_name',
-          type: 'text',
-          default: self.user.first_name
+          name: 'email',
+          type: 'email',
+          default: self.user.email,
+          validation: 'string|required|email'
         }]
       };
     }
