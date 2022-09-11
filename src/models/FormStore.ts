@@ -24,7 +24,7 @@ export const FormStore = types.model('FormStore', {
     }
   }))
   .actions(self => ({
-    getType
+    // getType
   }))
   .actions(self => ({
     createForm(formConfig: IFormConfig) {
