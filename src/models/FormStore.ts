@@ -1,9 +1,9 @@
-import { Instance, SnapshotOut, types } from "mobx-state-tree";
+import { Instance, ModelPropertiesDeclaration, SnapshotOut, types } from "mobx-state-tree";
 import { Form, FormType } from "./Form";
 
 export interface IFormConfig {
   formName: string;
-  fields: IFormField[];
+  fields: ;
 }
 
 export interface IFormField {
@@ -24,8 +24,14 @@ export const FormStore = types.model('FormStore', {
     }
   }))
   .actions(self => ({
+    getType
+  }))
+  .actions(self => ({
     createForm(formConfig: IFormConfig) {
-      console.log(formConfig);
+      //is string, is email.
+      const type = typeof formConfig.fields[0].name;
+
+      
     }
   }));
 
