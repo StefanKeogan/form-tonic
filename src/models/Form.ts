@@ -9,8 +9,8 @@ interface IHandleSubmitParams {
 
 export const Form = types.model('Form', {
   name: types.string,
-  fields: types.array(types.reference(types.late(():IAnyModelType => Field))),
-  validationSchema: types.array(ValidationSchema),
+  fields: types.array(Field),
+  validationSchema: ValidationSchema,
   submitting: types.optional(types.boolean, false),
 })
   .actions(self => ({

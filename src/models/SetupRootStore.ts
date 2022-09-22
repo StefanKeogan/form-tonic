@@ -2,8 +2,6 @@ import { RootStore, RootStoreType } from "./RootStore";
 import makeInspectable from 'mobx-devtools-mst';
 import UserStore from "./UserStore";
 import { setupFormTonicStore } from './SetupFormTonicStore';
-import { FormTonicStoreType } from "./FormTonicStore";
-
 
 /**
  * Setup the root state.

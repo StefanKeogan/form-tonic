@@ -1,4 +1,5 @@
 import React from "react"
+import { FieldType } from "../../models/Field"
 
 export interface IFormProps {
   /**
@@ -19,5 +20,5 @@ export interface IFormProps {
   /**
    * Dictates what component is rendered for each field type.
    */
-   renderField: (type: string) => React.ComponentType<any>
+   renderField: (field: FieldType, value: string | number | Array<string | number>) => React.ComponentType<any>
 }

@@ -3,6 +3,7 @@ import { observer } from "mobx-react-lite";
 import { IFormProps } from "./Form.types";
 import { useStores } from "../../models/RootStoreContext";
 import { values } from "mobx";
+import { FieldType } from "../../models/Field";
 
 const Form: React.FC<IFormProps> = props => {
 
@@ -13,9 +14,16 @@ const Form: React.FC<IFormProps> = props => {
     formTonicStore.formStore.formByName(name)?.handleSubmit({action});
   }
 
+  console.log(formTonicStore.formStore.formByName(name)?.fields)
+
   return (
-    <>{values(formTonicStore.formStore.formByName(name)?.fields).map(renderField)}</>
-  );
+    <>
+      {formTonicStore.formStore.formByName(name)?.fields.map((field: FieldType) => {
+        const value = (initialValues && initialValues[field.name]) ? initialValues[field.name] : '';
+        return <>{renderField(field, value)}</>
+      })}
+    </>
+  )
 }
 
 export default observer(Form);

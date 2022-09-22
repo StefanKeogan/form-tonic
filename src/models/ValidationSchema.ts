@@ -1,4 +1,4 @@
-import { types } from "mobx-state-tree"
+import { Instance, SnapshotOut, types } from "mobx-state-tree"
 import { ObjectSchema, object }from "yup"
 import { AnyObject, TypeOfShape, OptionalObjectSchema } from "yup/lib/object";
 
@@ -39,10 +39,14 @@ export const ValidationSchema = types.custom<string, OptionalObjectSchema<any, A
   },
 
   isTargetType(value: string | object) {
-    return value instanceof ObjectSchema;
+    return true; //value instanceof ObjectSchema;
   },
 
   getValidationMessage(value: string) {
     return 'This is not a valid schema';
   }
-})
+});
+
+// export interface ValidationSchemaType extends Instance<typeof ValidationSchema> {}
+// type ValidationSchemaSnapshotType = SnapshotOut<typeof ValidationSchema>
+// export interface ValidationSchemaSnapshot extends ValidationSchemaSnapshotType {}
