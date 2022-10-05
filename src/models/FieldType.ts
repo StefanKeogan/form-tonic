@@ -1,6 +1,7 @@
 import { Instance, SnapshotOut, types } from "mobx-state-tree"
 
 export const FieldType = types.model('FieldType', {
+  id: types.identifier,
   name: types.string,
 });
 

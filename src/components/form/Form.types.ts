@@ -1,9 +1,9 @@
 import React from "react"
-import { FieldType } from "../../models/Field"
+import { IRenderFieldProps } from "../field/field.types"
 
 export interface IFormProps {
   /**
-   * The name of the form, this is used for retrieving the form from the stores
+   * The name of the form, this is used for retrieving the form from the stores.
    */
   name: string
 
@@ -20,5 +20,5 @@ export interface IFormProps {
   /**
    * Dictates what component is rendered for each field type.
    */
-   renderField: (field: FieldType, value: string | number | Array<string | number>) => React.ComponentType<any>
+  renderField: React.FC<IRenderFieldProps>
 }

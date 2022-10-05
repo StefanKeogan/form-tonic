@@ -1,5 +1,5 @@
-import { Instance, SnapshotOut, types } from "mobx-state-tree"
-import { ObjectSchema, object }from "yup"
+import { Instance, SnapshotOut, types } from "mobx-state-tree";
+import { ObjectSchema, object }from "yup";
 import { AnyObject, TypeOfShape, OptionalObjectSchema } from "yup/lib/object";
 
 export const ValidationSchema = types.custom<string, OptionalObjectSchema<any, AnyObject, TypeOfShape<any>>>({

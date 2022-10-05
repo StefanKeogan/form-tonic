@@ -1,17 +1,18 @@
 import { castToReferenceSnapshot } from "mobx-state-tree";
+import { FieldTypeSnapshot } from "./FieldType";
 import { FieldTypeStore } from "./FieldTypeStore";
 import { FormStore } from "./FormStore";
 import { FormTonicStore } from "./FormTonicStore";
 
 interface IConfig {
-  customFieldTypes?: Array<{name: string}>
+  customFieldTypes?: FieldTypeSnapshot[]
 }
 
 export async function setupFormTonicStore(config?: IConfig) {
 
-  let fieldTypes = [
-    { name: 'text' },
-    { name: 'select' },
+  let fieldTypes: FieldTypeSnapshot[] = [
+    { id: '1', name: 'text' },
+    { id: '2', name: 'select' },
   ];
 
   if (config?.customFieldTypes) {
@@ -23,7 +24,7 @@ export async function setupFormTonicStore(config?: IConfig) {
 
   const formTonicStore = FormTonicStore.create({
     formStore: castToReferenceSnapshot(FormStore.create()),
-    fieldTypeStore: FieldTypeStore.create()
+    fieldTypeStore: FieldTypeStore.create({fieldTypes})
   });
 
   return formTonicStore;
